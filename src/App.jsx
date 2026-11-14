@@ -1,7 +1,10 @@
 import MovieCard from "./MovieCard";
-function App() {
+import {useState} from "react";
 
-const movies = [
+
+
+function App() {
+const initialMovies = [
     {
         id: 1,
         title: "Inception",
@@ -138,7 +141,44 @@ const movies = [
         synopsis: "A betrayed Roman general becomes a gladiator and seeks justice against the emperor who destroyed his life."
     }
 ];
+const [movies, setMovies] = useState(initialMovies)
 
+function removeMove(){
+
+  
+}
+function handleSUbmit(event){
+  event.preventDefault()
+
+  const form = event.target;
+  const formData = new FormData(form)
+
+  const title = formData.get("name");
+  const director = formData.get("director");
+  const releaseYear = Number(formData.get("year"));
+  const rating = Number(formData.get("rating"));
+  const synopsis = formData.get("synopsis");
+
+  const genre = formData.get("genre")
+    .split(",")
+    .map(item => item.trim());
+
+  
+  const newMovie ={
+    id: Date.now(),
+    title: title,
+    director: director,
+    releaseYear: releaseYear,
+    rating: rating,
+    synopsis : synopsis,
+    genre: genre
+
+  };
+
+  setMovies(previousMovies => [...previousMovies, newMovie]);
+  form.reset()
+
+}
 return(
     <main>
     <h1> My Movie Library</h1>
@@ -149,7 +189,35 @@ return(
         </div>
 
     ))}
+    <form onSubmit={handleSUbmit}>
+      <label htmlFor="name">
+        Movie Name
+      </label>
+      <input type="text" id="name"  name="name" placeholder="Enter movie title....."/>
+
+      <label htmlFor="year">Release Year</label>
+      <input type="number" id="year" name="year" placeholder="Year of release"/>
+
+      <label htmlFor="synopsis"> Synopsis</label>
+      <textarea name="synopsis" id="synopsis" placeholder="Enter a brief synopsis..."></textarea>
+
+      
+      <label htmlFor="director">Director</label>
+      <input type="text" id="director" name="director" placeholder="Director..."/>
+
+      <label htmlFor="genre">Genre</label>
+      <input type="text" name="genre" id="genre"  placeholder="Enter genre"/>
+      <label htmlFor="rating">Rating</label>
+      <input type="number" id="rating" min={0} max={10} step={0.1} name="rating" placeholder="Enter rating.."/>
+
+
+      <button type="submit">Submit </button>
+      
+    </form>
+
     </main>
 )
+
 }
+
 export default App
