@@ -143,10 +143,6 @@ const initialMovies = [
 ];
 const [movies, setMovies] = useState(initialMovies)
 
-function removeMove(){
-
-  
-}
 function handleSUbmit(event){
   event.preventDefault()
 
@@ -179,13 +175,19 @@ function handleSUbmit(event){
   form.reset()
 
 }
+function deleteMovie(id) {
+    setMovies(previousMovies =>
+        previousMovies.filter(movie => movie.id !== id)
+    );
+}
 return(
     <main>
     <h1> My Movie Library</h1>
 
      {movies.map((movie)=>(
         <div key= {movie.id}>
-            <MovieCard data = {movie}/>
+            <MovieCard data = {movie}
+            onDelete={()=> deleteMovie(movie.id)}/>
         </div>
 
     ))}
@@ -212,7 +214,8 @@ return(
 
 
       <button type="submit">Submit </button>
-      
+
+
     </form>
 
     </main>
