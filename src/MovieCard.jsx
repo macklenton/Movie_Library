@@ -1,13 +1,32 @@
-function MovieCard({data, onDelete}) {
-    return(
-        <>
-        <h2>{data.title} </h2>
-        <p>{data.director}</p>
-        <p>{data.releaseYear}</p>
-        <p>{data.synopsis}</p>
-        <button type="button" onClick={onDelete}> Delet Movie</button>
-        </>
-    )
-    
+function MovieCard({ data, onDelete }) {
+    return (
+        <article>
+
+            <h2>
+                {data.title}
+            </h2>
+
+            <p>
+                Director: {data.director}
+            </p>
+
+            <p>
+                Release Year: {data.releaseYear}
+            </p>
+
+            <p>
+                {data.synopsis}
+            </p>
+
+            <button
+                type="button"
+                onClick={onDelete}
+            >
+                Delete Movie
+            </button>
+
+        </article>
+    );
 }
-export default MovieCard
+
+export default MovieCard;
