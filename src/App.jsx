@@ -182,7 +182,7 @@ function deleteMovie(id) {
 return(
     <main className="min-h-screen bg-slate-950 px-5 py-10 text-white md:px-10">
 
-    {/* Page Heading */}
+    
     <header className="mx-auto mb-10 max-w-7xl">
         <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-purple-400">
             Your personal collection
@@ -199,7 +199,7 @@ return(
 
     <div className="mx-auto max-w-7xl">
 
-    {/* Movie Collection */}
+
     <section className="mb-12">
 
         <div className="mb-6 flex items-center justify-between">
@@ -226,7 +226,6 @@ return(
         </div>
     </section>
 
-    {/* Add Movie Form */}
     <section className="rounded-2xl border border-slate-700 bg-slate-900 p-6 shadow-xl md:p-8">
 
         <div className="mb-7">
