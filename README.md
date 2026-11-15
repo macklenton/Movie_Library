@@ -24,7 +24,7 @@ This project was developed to practise React fundamentals, component-based archi
 ##  Project Structure
 
 ```text
-movieList_React/
+movie_Library/
 │
 ├── public/
 │
